@@ -1,11 +1,31 @@
-export default function Home() {
+import Link from "next/link";
+import { Pokemon, SERVER_URL } from "@/definitions";
+
+async function getPokemon(): Promise<Array<Pokemon>> {
+  const res = await fetch(`${SERVER_URL}/api/pokemon/`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch pokemon");
+  }
+
+  return res.json();
+}
+
+export default async function Home() {
+  const pokemon = await getPokemon();
+
   return (
     <main className="flex-col space-y-5 items-start">
       <p>Select pokemon from the list below to see its details.</p>
 
       <div>
         <ul>
-          <li>Pokemon 1</li>
+          {pokemon.map((poke: any) => (
+            <li key={poke.slug}>
+              <Link href={`/pokemon/${poke.slug}/`}>{poke.name}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </main>
