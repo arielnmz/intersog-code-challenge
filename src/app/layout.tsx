@@ -16,7 +16,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex min-h-screen flex-col items-start justify-start p-24 font-mono space-y-5">
+          <header>
+            <div className="w-full items-start justify-start">
+              <h1 className="text-lg">Intersog Code Challenge</h1>
+            </div>
+          </header>
+
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
