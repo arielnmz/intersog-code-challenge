@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Pokemon, SERVER_URL } from "@/definitions";
+import { PokemonResponse, SERVER_URL } from "@/definitions";
 
-async function getPokemon(): Promise<Array<Pokemon>> {
+async function getPokemon(): Promise<PokemonResponse> {
   const res = await fetch(`${SERVER_URL}/api/pokemon/`);
 
   if (!res.ok) {
@@ -19,15 +19,19 @@ export default async function Home() {
     <main className="flex-col space-y-5 items-start">
       <p>Select pokemon from the list below to see its details.</p>
 
-      <div>
-        <ul>
-          {pokemon.map((poke: any) => (
-            <li key={poke.slug}>
-              <Link href={`/pokemon/${poke.slug}/`}>{poke.name}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {(pokemon.errors && (
+        <p className="text-red-800">Error fetching pokemon! {pokemon.errors}</p>
+      )) || (
+        <div>
+          <ul>
+            {pokemon.result.map((poke: any) => (
+              <li key={poke.slug} className="capitalize">
+                <Link href={`/pokemon/${poke.name}/`}>{poke.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </main>
   );
 }

@@ -1,5 +1,24 @@
-export async function GET() {
-  const pokemon = [{ id: "001", slug: "pokemon-1", name: "Pokemon 1" }];
+import { getgen3StartersSlugs, getPokemonDetails } from "@/dal";
 
-  return Response.json(pokemon);
+export async function GET() {
+  // Fetch some starter pokemon
+  const starterSlugs = await getgen3StartersSlugs();
+
+  const pokemonInfo = [];
+
+  try {
+    for await (const pokemon of getPokemonDetails(starterSlugs)) {
+      pokemonInfo.push(pokemon);
+    }
+
+    return Response.json({
+      errors: null,
+      result: pokemonInfo,
+    });
+  } catch (e) {
+    return Response.json({
+      errors: [(e as Error).message],
+      result: pokemonInfo,
+    });
+  }
 }
