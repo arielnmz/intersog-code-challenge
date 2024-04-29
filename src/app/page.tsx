@@ -26,7 +26,7 @@ export default async function Home() {
           <ul>
             {pokemon.result.map((poke: any) => (
               <li key={poke.slug} className="capitalize">
-                <Link href={`/pokemon/${poke.name}/`}>{poke.name}</Link>
+                <Link href={`/pokemon/${poke.slug}/`}>{poke.name}</Link>
               </li>
             ))}
           </ul>
