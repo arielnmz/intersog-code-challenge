@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SignipForm } from "@/app/ui/signup-form";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,10 @@ export default function RootLayout({
           <header>
             <div className="w-full items-start justify-start">
               <h1 className="text-lg">Intersog Code Challenge</h1>
+            </div>
+
+            <div>
+              <SignipForm />
             </div>
           </header>
 
