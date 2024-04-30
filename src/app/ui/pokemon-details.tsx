@@ -1,6 +1,5 @@
 import TypePill from "@/app/ui/type-pill";
 import PokemonPic from "@/app/ui/pokemon-pic";
-import PokemonMatchups from "@/app/ui/pokemon-matchups";
 
 export default function PokemonDetails(params: { details: any }) {
   return (
@@ -11,7 +10,7 @@ export default function PokemonDetails(params: { details: any }) {
       <p>
         Types:{" "}
         {params.details.types.map((t: any) => (
-          <TypePill typeSlug={t.type.name} />
+          <TypePill key={t.type.name} typeSlug={t.type.name} />
         ))}
       </p>
       <div>

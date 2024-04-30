@@ -3,7 +3,6 @@ import {
   SERVER_URL,
   UnFAVORABLE_MATCHUP_KEY,
 } from "@/definitions";
-import Link from "next/link";
 import PokemonDetails from "@/app/ui/pokemon-details";
 import PokemonMatchups from "@/app/ui/pokemon-matchups";
 
