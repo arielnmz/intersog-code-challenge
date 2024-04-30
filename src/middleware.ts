@@ -11,7 +11,6 @@ export function middleware(request: NextRequest) {
   // Check the origin from the request
   const origin = request.headers.get("origin") ?? "";
   const isAllowedOrigin = allowedOrigins.includes(origin);
-  console.log("Allowed origin", origin);
 
   // Handle preflighted requests
   const isPreflight = request.method === "OPTIONS";
@@ -29,6 +28,7 @@ export function middleware(request: NextRequest) {
 
   // Force a response to get something even if the preflight is not sent (as is sometimes normal for GET requests)
   if (isAllowedOrigin || true) {
+    console.warn("Allow any origins for dev purposes");
     response.headers.set(
       "Access-Control-Allow-Origin",
       "http://localhost:3000",
