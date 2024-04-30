@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SignipForm } from "@/app/ui/signup-form";
+import { SigninForm } from "@/app/ui/signup-form";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex min-h-screen flex-col items-start justify-start p-24 font-mono space-y-5">
-          <header>
-            <div className="w-full items-start justify-start">
-              <h1 className="text-lg">Intersog Code Challenge</h1>
+          <header
+            className={"w-full flex flex-row items-start justify-between"}
+          >
+            <div className="">
+              <h1 className="text-lg">
+                <Link href={"/"}>Intersog Code Challenge</Link>
+              </h1>
             </div>
 
             <div>
-              <SignipForm />
+              <SigninForm />
             </div>
           </header>
 

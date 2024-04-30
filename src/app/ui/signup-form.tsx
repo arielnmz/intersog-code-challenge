@@ -17,14 +17,14 @@ export function SignupButton() {
   );
 }
 
-export function SignipForm() {
+export function SigninForm() {
   const [state, action] = useFormState(signin, undefined);
 
   return (
     <form action={action}>
       <div className="flex flex-row items-start justify-start space-x-2">
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email</label>:
           <input
             id="email"
             name="email"
@@ -33,8 +33,8 @@ export function SignipForm() {
           />
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className={"ml-2"}>
+          <label htmlFor="password">Password</label>:
           <input
             id="password"
             name="password"
