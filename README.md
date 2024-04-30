@@ -14,6 +14,10 @@ INTERSOG code challenge repository
     ```
 4. Navigate to [http://localhost:3000](http://localhost:3000) with your browser to browse some pokemon.
 
+## Contributing
+
+This project uses prettier and eslint for formatting and linting.
+
 ## Caveats
 
 - The project was built using [Next.js' App router](https://nextjs.org/docs#app-router-vs-pages-router), hence the need
@@ -22,6 +26,8 @@ for a [current Node.js version](https://nextjs.org/docs/getting-started/installa
 - The API serves as a proxy between the application and the Pokemon API.
 - A middleware was implemented to allow CORS requests but GET requests may sometimes not require a preflight, hence the
 need for the [quick&dirty request origin hack](src%2Fmiddleware.ts).
+- Completely skipped tests intentionally.
+  
 
 ## Authentication
 
