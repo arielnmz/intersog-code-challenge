@@ -22,23 +22,26 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const pokemonType = pokemonDetails.result.types[0].type.name;
 
   return (
-    <div>
+    <div className={"w-full"}>
       {(pokemonDetails.errors && (
         <p className="text-red-800">
           Error fetching pokemon! {pokemonDetails.errors}
         </p>
       )) || (
-        <div>
+        <div className={"flex flex-row items-start justify-start"}>
           <PokemonDetails details={pokemonDetails.result} />
-          <div className="flex flex-row items-start justify-between">
-            <PokemonMatchups
-              typeName={pokemonType}
-              matchupType={FAVORABLE_MATCHUP_KEY}
-            />
-            <PokemonMatchups
-              typeName={pokemonType}
-              matchupType={UnFAVORABLE_MATCHUP_KEY}
-            />
+          <div>
+            <h2>Matchups</h2>
+            <div className="flex flex-row items-start justify-between space-x-5">
+              <PokemonMatchups
+                typeName={pokemonType}
+                matchupType={FAVORABLE_MATCHUP_KEY}
+              />
+              <PokemonMatchups
+                typeName={pokemonType}
+                matchupType={UnFAVORABLE_MATCHUP_KEY}
+              />
+            </div>
           </div>
         </div>
       )}
