@@ -67,19 +67,28 @@ export default function PokemonMatchups(params: {
   const matchupTitle =
     params.matchupType === FAVORABLE_MATCHUP_KEY ? "favorable" : "unfavorable";
 
+  const matchupStyle =
+    params.matchupType === FAVORABLE_MATCHUP_KEY
+      ? "text-green-200"
+      : "text-red-200";
+
   return (
     <div>
-      <h2 className="capitalize">{matchupTitle}</h2>
+      <h3 className={`capitalize font-bold ${matchupStyle}`}>{matchupTitle}</h3>
 
       <ul>
         {shownMatchups?.map((matchup) => (
-          <li key={matchup.name} className="capitalize">
+          <li key={matchup.name} className="capitalize pl-2">
+            {"└─ "}
             {matchup.name}
           </li>
         ))}
       </ul>
 
-      <button className="bg-neutral-800 p-2 rounded" onClick={showMore}>
+      <button
+        className="bg-neutral-800 p-2 rounded hover:bg-neutral-700 mt-2"
+        onClick={showMore}
+      >
         Load more...
       </button>
     </div>

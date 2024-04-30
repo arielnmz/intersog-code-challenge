@@ -25,7 +25,7 @@ export default async function Home() {
         <div>
           <ul>
             {pokemon.result.map((poke: any) => (
-              <li key={poke.slug} className="capitalize">
+              <li key={poke.slug} className="capitalize hover:text-gray-500">
                 <Link href={`/pokemon/${poke.slug}/`}>{poke.name}</Link>
               </li>
             ))}
